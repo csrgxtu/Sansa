@@ -5,7 +5,8 @@
 # File: DrawWav.py
 # Desc: 将wav文件通过坐标系画出来
 import wave
-import pylab as pl
+# import pylab as pl
+from matplotlib import pyplot as pl
 import numpy as np
 
 # 打开WAV文档
