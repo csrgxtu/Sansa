@@ -10,6 +10,7 @@ import numpy as np
 from datetime import datetime
 import wave
 import subprocess
+import time
 
 Mplayer = '/usr/bin/mplayer'    # mplayer
 Mp3File = 'http://7u2q8y.com2.z0.glb.qiniucdn.com/c1_96k/7bfa281f257c0d94288da6566c7f26d6ec5c57a57331b355632dbcda7a25f51f8d485902.mp3'
@@ -36,8 +37,9 @@ while True:
     audio_data = np.fromstring(string_audio_data, dtype=np.short)
     # 计算大于LEVEL的取样的个数
     large_sample_count = np.sum( audio_data > LEVEL )
-    if np.max(audio_data) > 12000:
+    if np.max(audio_data) > 15000:
         print np.max(audio_data), 'big noise'
         subprocess.call([Mplayer, Mp3File])
+        time.sleep(2)
     else:
-        print 'so quiet ...'
+        print np.max(audio_data), 'so quiet ...'
